@@ -1,0 +1,249 @@
+algoritmo calango_sena;
+// Síntese
+//  Objetivo: Sortear uma sequência de números e verificar se o jogador consegue acertar todos os números dessa sequência.
+//  Entrada: 6 números inteiros 
+//  Saída   : Quantos e quais números você acertou.
+
+
+principal
+	// Declarações
+	inteiro numeros_sorteados[6], numeros_jogados[6], sorteado, jogado, acertos, i, j, indice_jogados[6];
+	logico sorteado_igual, jogado_igual;
+	caracter continuar;
+
+	// Instruções
+	// Sorteia o primeiro número
+	i = 0;
+	sorteado = aleatorio(60);
+	enquanto(sorteado == 0) faca
+		sorteado = aleatorio(60);
+	fimEnquanto
+	numeros_sorteados[i] = sorteado;
+	i = i+1;
+
+	// Sorteia o os demais números
+	enquanto (i<=5) faca
+		faca
+			sorteado = aleatorio(60);
+			sorteado_igual = igual(numeros_sorteados, sorteado, i);
+		enquanto(sorteado == 0 ou sorteado_igual == verdadeiro);
+		numeros_sorteados[i] = sorteado;
+		i = i + 1;
+	fimEnquanto
+
+	// Ordenar os números sorteados
+	ordenar(numeros_sorteados);
+
+	// Escreve os números sorteados
+	escreva(numeros_sorteados[0]);
+	para(i de 1 ate 5 passo 1 ) faca
+		escreva("  -  ", numeros_sorteados[i]);
+		se (i==5) entao
+			escreval("");
+	fimSe
+	fimPara
+
+	// Laço de repetição para jogar mais de uma vez
+	faca
+	// Escreve o cabeçalho
+escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+escreval("          _____                    _____                    _____            _____                    _____                    _____                   _______");
+escreval("         /\    \                  /\    \                  /\    \          /\    \                  /\    \                  /\    \                 /::\    \");
+escreval("        /::\    \                /::\    \                /::\____\        /::\    \                /::\____\                /::\    \               /::::\    \");
+escreval("       /::::\    \              /::::\    \              /:::/    /       /::::\    \              /::::|   |               /::::\    \             /::::::\    \");
+escreval("      /::::::\    \            /::::::\    \            /:::/    /       /::::::\    \            /:::::|   |              /::::::\    \           /::::::::\    \");
+escreval("     /:::/\:::\    \          /:::/\:::\    \          /:::/    /       /:::/\:::\    \          /::::::|   |             /:::/\:::\    \         /:::/~~\:::\    \");
+escreval("    /:::/  \:::\    \        /:::/__\:::\    \        /:::/    /       /:::/__\:::\    \        /:::/|::|   |            /:::/  \:::\    \       /:::/    \:::\    \");
+escreval("   /:::/    \:::\    \      /::::\   \:::\    \      /:::/    /       /::::\   \:::\    \      /:::/ |::|   |           /:::/    \:::\    \     /:::/    / \:::\    \");
+escreval("  /:::/    / \:::\    \    /::::::\   \:::\    \    /:::/    /       /::::::\   \:::\    \    /:::/  |::|   | _____    /:::/    / \:::\    \   /:::/____/   \:::\____\");
+escreval(" /:::/    /   \:::\    \  /:::/\:::\   \:::\    \  /:::/    /       /:::/\:::\   \:::\    \  /:::/   |::|   |/\    \  /:::/    /   \:::\ ___\ |:::|    |     |:::|    |");
+escreval("/:::/____/     \:::\____\/:::/  \:::\   \:::\____\/:::/____/       /:::/  \:::\   \:::\____\/:: /    |::|   /::\____\/:::/____/  ___\:::|    ||:::|____|     |:::|    |");
+escreval("\:::\    \      \::/    /\::/    \:::\  /:::/    /\:::\    \       \::/    \:::\  /:::/    /\::/    /|::|  /:::/    /\:::\    \ /\  /:::|____| \:::\    \   /:::/    /");
+escreval(" \:::\    \      \/____/  \/____/ \:::\/:::/    /  \:::\    \       \/____/ \:::\/:::/    /  \/____/ |::| /:::/    /  \:::\    /::\ \::/    /   \:::\    \ /:::/    /");
+escreval("  \:::\    \                       \::::::/    /    \:::\    \               \::::::/    /           |::|/:::/    /    \:::\   \:::\ \/____/     \:::\    /:::/    /");
+escreval("   \:::\    \                       \::::/    /      \:::\    \               \::::/    /            |::::::/    /      \:::\   \:::\____\        \:::\__/:::/    /");
+escreval("    \:::\    \                      /:::/    /        \:::\    \              /:::/    /             |:::::/    /        \:::\  /:::/    /         \::::::::/    /");
+escreval("     \:::\    \                    /:::/    /          \:::\    \            /:::/    /              |::::/    /          \:::\/:::/    /           \::::::/    /");
+escreval("      \:::\    \                  /:::/    /            \:::\    \          /:::/    /               /:::/    /            \::::::/    /             \::::/    /");
+escreval("       \:::\____\                /:::/    /              \:::\____\        /:::/    /               /:::/    /              \::::/    /               \::/____/");
+escreval("        \::/    /                \::/    /                \::/    /        \::/    /                \::/    /                \::/____/                 ~~");
+escreval("         \/____/                  \/____/                  \/____/          \/____/                  \/____/");
+escreval("");
+escreval("");
+escreval("");
+escreval("			          _____                    _____                    _____                    _____");
+escreval("			         /\    \                  /\    \                  /\    \                  /\    \");
+escreval("			        /::\    \                /::\    \                /::\____\                /::\    \");
+escreval("			       /::::\    \              /::::\    \              /::::|   |               /::::\    \");
+escreval("			      /::::::\    \            /::::::\    \            /:::::|   |              /::::::\    \");
+escreval("			     /:::/\:::\    \          /:::/\:::\    \          /::::::|   |             /:::/\:::\    \");
+escreval("			    /:::/__\:::\    \        /:::/__\:::\    \        /:::/|::|   |            /:::/__\:::\    \");
+escreval("			    \:::\   \:::\    \      /::::\   \:::\    \      /:::/ |::|   |           /::::\   \:::\    \");
+escreval("			  ___\:::\   \:::\    \    /::::::\   \:::\    \    /:::/  |::|   | _____    /::::::\   \:::\    \");
+escreval("			 /\   \:::\   \:::\    \  /:::/\:::\   \:::\    \  /:::/   |::|   |/\    \  /:::/\:::\   \:::\    \");
+escreval("			/::\   \:::\   \:::\____\/:::/__\:::\   \:::\____\/:: /    |::|   /::\____\/:::/  \:::\   \:::\____\");
+escreval("			\:::\   \:::\   \::/    /\:::\   \:::\   \::/    /\::/    /|::|  /:::/    /\::/    \:::\  /:::/    /");
+escreval("			 \:::\   \:::\   \/____/  \:::\   \:::\   \/____/  \/____/ |::| /:::/    /  \/____/ \:::\/:::/    /");
+escreval("			  \:::\   \:::\    \       \:::\   \:::\    \              |::|/:::/    /            \::::::/    /");
+escreval("			   \:::\   \:::\____\       \:::\   \:::\____\             |::::::/    /              \::::/    /");
+escreval("			    \:::\  /:::/    /        \:::\   \::/    /             |:::::/    /               /:::/    /");
+escreval("			     \:::\/:::/    /          \:::\   \/____/              |::::/    /               /:::/    /");
+escreval("			      \::::::/    /            \:::\    \                  /:::/    /               /:::/    /");
+escreval("			       \::::/    /              \:::\____\                /:::/    /               /:::/    /");
+escreval("			        \::/    /                \::/    /                \::/    /                \::/    /");
+escreval("			         \/____/                  \/____/                  \/____/                  \/____/");
+escreval("");
+escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+escreval("                                                 LOTERIAS B. D. - GAMA/DF                  VALOR DO PRÊMIO: R$1.000.000,00                                            ");
+escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+		//Lê os números jogados
+		i=0;
+		escreva("Digite o ", i + 1, "º número: ");
+		leia(jogado);
+		enquanto(jogado <=0 ou jogado > 60) faca
+			escreva("Número inválido, digite novamente o ", i + 1, "º número: ");
+			leia(jogado);
+		fimEnquanto
+		numeros_jogados[i] = jogado;
+		
+		para(i de 1 ate 5 passo 1) faca
+			escreva("Digite o ", i + 1, "º número: ");
+			leia(jogado);
+			jogado_igual = igual(numeros_jogados, jogado, i);
+			enquanto(jogado <=0 ou jogado > 60 ou jogado_igual == verdadeiro) faca
+				escreva("Número inválido, digite novamente o ", i + 1, "º número: ");
+				leia(jogado);
+				jogado_igual = igual(numeros_jogados, jogado, i);
+			fimEnquanto
+			numeros_jogados[i] = jogado;
+		fimPara
+		// Ordena os números jogados
+		ordenar(numeros_jogados);
+
+		//Calcula a quantidade de acertos
+		acertos = 0;
+		para(i de 0 ate 5 passo 1) faca
+		indice_jogados[i] = 0;
+			para (j de 0 ate 5 passo 1) faca
+				se (numeros_jogados[i] == numeros_sorteados[j]) entao
+					acertos = acertos +1 ;
+					indice_jogados[i] = 1;
+				fimSe
+			fimPara
+		fimPara
+
+		//Escreve os números jogados
+		escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		para(i de 0 ate 5 passo 1 )faca
+			se(indice_jogados[i] == 1) entao
+				escreva(" - [", numeros_jogados[i],"]");
+			senao
+				escreva(" - ",numeros_jogados[i]);
+			fimSe
+		fimPara
+		escreval("");
+
+		// Verifica se você ganhou a CALANGO SENA
+		se(acertos == 6) entao
+			escreval("PARABÉNS, VOCÊ GANHOU A CALANGO-SENA!");
+			escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");                                                                                   
+                        escreval("                  .:^^^^^^^:.");                                                
+                        escreval("               :^^:.      . :^^:                      ");                       
+                        escreval("             :~^.            .^7!.                    ");                        
+                        escreval("            ^~:.:             ^?J?:.:::::.            ");                        
+                        escreval("           .! :.             . :5?Y~....:^^:          ");                        
+                        escreval("           ^^::             . .5JJ!    ...^!.        ");                        
+                        escreval("           ^:^:               !PY!      .:^7:       ");                        
+                        escreval("           .~.             . .Y5J^      ..~~7       ");                        
+                        escreval("            ~^::   .:    :: ^5BJJ.      ..!7!^      ");                        
+                        escreval("             ^~^::  .......!PP55^       ::JP7~      ");                        
+                        escreval("              .^^^^!!:^^!?5PY5J:       ^^:YY!^      ");                        
+                        escreval("                .:^7J?55P5YY7^::.  ...::~5GJ~       ");                        
+                        escreval("         ......      :P5!PP7~:::.^:^^^?JPPJ^        ");                        
+                        escreval("      .^^^^^~~^^^^   .^!.:YJ?JPJ??7?PY5P?~.         ");                        
+                        escreval("     ^^.    ^^::~?7:  .~   ^!YG5J????7~:.           ");                        
+                        escreval("    ~:    ...:::^7Y?~ .~    .!YY...                 ");                        
+                        escreval("   ^~          .:^?5J!.~     ^~:                    ");                        
+                        escreval("   !:^^          ^:?BY7~     ~          .::::::^:^:..");                       
+                        escreval("   !:::          ~~^5#J7    ^:        .^:.       .^~~^:");                     
+                        escreval("   :!.~^         !!~JB?7   .~        ^^. .:       ..::~!:");                   
+                        escreval("    ^~:^        :~:^P#JJ   ^:      .^^.:^.         ^.:^^!^");                  
+                        escreval("     :~: ..     ^..JP5J?   ~       !.:..           .~:^^:!:");                 
+                        escreval("      .^~^~!?~^:!7YP5?^~  :^      :~...             :. :~~7");                 
+                        escreval("        .^~755YYY5?7^. ~. ~.      ^^::.            .::.~!!J");                 
+                        escreval("            .:^^75Y^   ^. !       .~.^              ^^.J77?");                 
+                        escreval("                ::?^   ^..~        ^^  :           .: ^J^7^");                 
+                        escreval("                  ^?.  ~::^         !~~    .    :^^^:^J!!^");                  
+                        escreval("                  .!!  ~::^         .77!~:::.:::^^.:!77!:");                   
+                        escreval("                .:^.^^ ^:^:           ~JPPYJ!^^!7?J?J?^.");                    
+                        escreval("                 .   ~ :^:.             ^?5BGGYYYJ7~:");                       
+                        escreval("                     :^.^^.              .^?YJ^.");                            
+                        escreval("                      ~.~^.               :!.");                               
+                        escreval("                      ^:~^.              .~:");                                
+                        escreval("                      .~~^.              ^.::.");                              
+                        escreval("                       !~^:              ^");                                  
+                        escreval("                       !~^^              ^");                                  
+                        escreval("                      .^~:^              ^");                                  
+                        escreval("                      ..:.~              ~");                                  
+                        escreval("                         !              !");                                  
+                        escreval("                          ~:             ~.");                                 
+                        escreval("                          :!             !.");                                 
+                        escreval("                           ^            .~");                                  
+                        escreval("                                       .^.");                                  
+                        escreval("                                 ::::::.");                                                         
+                        escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+			interrompa;
+		senao
+			se(acertos == 1) entao
+				escreval("Você acertou ", acertos, " número!");
+			senao
+				escreval("Você acertou ", acertos, " números!");
+			fimSe
+		fimSe
+		escreval("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		faca
+			escreva("Deseja jogar outra vez? [s/n]: ");
+			leiaCaracter(continuar);
+		enquanto(continuar != 's' e continuar != 'n');
+		se (continuar == 's') entao
+			limpaTela();
+		fimSe
+	enquanto(continuar == 's');
+
+
+fimPrincipal
+
+
+// Procedimento para ordenar a sequência de números sorteados/jogados
+procedimento ordenar(inteiro sequencia[])
+	inteiro n, i, j , menor, indice_menor;
+	n=6;
+	para(i de 0 ate n - 1 passo 1) faca
+		menor = sequencia[i];
+		indice_menor = i;
+		para(j de i + 1 ate n - 1 passo 1) faca
+			se(sequencia[j] < sequencia[indice_menor]) entao
+				menor = sequencia[j];
+				indice_menor = j;
+			fimSe
+		fimPara
+		sequencia[indice_menor] = sequencia[i];
+		sequencia[i] =  menor;
+	fimPara
+fimProcedimento
+
+//	Função para comparar se o valor que foi sorteado já tinha sido sorteado
+funcao logico igual(inteiro numeros_sorteados[], inteiro sorteado, inteiro i)
+	inteiro j;
+	logico sorteado_igual;
+	para(j de 0 ate i-1 passo 1) faca
+		se(sorteado == numeros_sorteados[j]) entao
+			sorteado_igual = verdadeiro;
+			interrompa;
+		senao
+			sorteado_igual =  falso;
+		fimSe
+	fimPara
+	retorna sorteado_igual;
+fimFuncao
